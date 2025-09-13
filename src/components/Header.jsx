@@ -17,7 +17,7 @@ const Header = () => {
   const user = true;
   return (
     <>
-    <nav className="py-4 flex justify-between items-center ">
+    <nav className="py-2 flex justify-between items-center ">
     <Link to="/">
       <img src="/logo.png" className="h-24" alt="QuickTrim logo" />
     </Link>
@@ -27,14 +27,14 @@ const Header = () => {
         <Button onClick={() => navigate("/auth")}>Login</Button>
       ) : (
         <DropdownMenu >
-          <DropdownMenuTrigger className="  w-10 rounded-full overflow-hidden ">
+          <DropdownMenuTrigger className="   w-8 rounded-full overflow-hidden ">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>DT</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
 
-          <DropdownMenuContent>
+          <DropdownMenuContent className='font-grotesk'>
             <DropdownMenuLabel>Dixit Thakor</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
