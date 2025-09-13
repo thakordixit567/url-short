@@ -1,10 +1,12 @@
 
-import { createBrowserRouter } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import './App.css'
 import Applayout from './layouts/Applayout'
 import Landingpage from './pages/Landingpage'
 import Dashboard from './pages/dashboard'
 import Auth from './pages/auth'
+import Link from './pages/Link'
+import Redirectlink from './pages/Redirectlink'
 
 
 const router = createBrowserRouter([
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
         path: '/auth',
         element: <Auth/>,
       },
+       {
+        path: '/link/:id',
+        element: <Link/>,
+      },
+       {
+        path: '/:id',
+        element: <Redirectlink/>,
+      },
     ],
   }
 ])
@@ -31,7 +41,7 @@ function App() {
   
 
   return (
-    <div className=' text-5xl'>Dixit Thakor</div>
+    <RouterProvider router={router} />
   )
 }
 
