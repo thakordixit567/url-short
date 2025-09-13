@@ -19,15 +19,15 @@ const Header = () => {
     <>
     <nav className="py-4 flex justify-between items-center ">
     <Link to="/">
-      <img src="/logo.png" className="h-24 w-26" alt="QuickTrim logo" />
+      <img src="/logo.png" className="h-24" alt="QuickTrim logo" />
     </Link>
 
     <div className=" flex gap-4 ">
       {!user ? (
         <Button onClick={() => navigate("/auth")}>Login</Button>
       ) : (
-        <DropdownMenu>
-          <DropdownMenuTrigger className=" w-10 rounded-full overflow-hidden ">
+        <DropdownMenu >
+          <DropdownMenuTrigger className="  w-10 rounded-full overflow-hidden ">
             <Avatar>
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>DT</AvatarFallback>
@@ -38,8 +38,10 @@ const Header = () => {
             <DropdownMenuLabel>Dixit Thakor</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <LinkIcon className=" mr-2 h-4 w-4 " />
-              My Links
+            <Link to="/dashboard" className="flex">
+            <LinkIcon className="mr-2 h-4 w-4" />
+            My Links
+          </Link>
             </DropdownMenuItem>
             <DropdownMenuItem className=" text-red-400 ">
               <LogOut className=" mr-2 h-4 w-4 " />
