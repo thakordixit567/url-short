@@ -11,47 +11,63 @@ import {
 } from "./ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { LinkIcon, LogOut } from "lucide-react";
+import { UrlState } from "@/context";
+import useFetch from "@/hooks/usefetch";
+import { logout } from "@/db/apiAuth";
 
 const Header = () => {
   const navigate = useNavigate();
-  const user = false;
+  const { user, fetchUser } = UrlState();
+
+  useFetch(logout);
   return (
     <>
-    <nav className="py-2 flex justify-between items-center ">
-    <Link to="/">
-      <img src="/logo.png" className="h-24" alt="QuickTrim logo" />
-    </Link>
+      <nav className="py-2 flex justify-between items-center ">
+        <Link to="/">
+          <img src="/logo.png" className="h-24" alt="QuickTrim logo" />
+        </Link>
 
-    <div className=" flex gap-4 ">
-      {!user ? (
-        <Button onClick={() => navigate("/auth")}>Login</Button>
-      ) : (
-        <DropdownMenu >
-          <DropdownMenuTrigger className="   w-8 rounded-full overflow-hidden ">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>DT</AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
+        <div className=" flex gap-4 ">
+          {!user ? (
+            <Button onClick={() => navigate("/auth")}>Login</Button>
+          ) : (
+            <DropdownMenu>
+              <DropdownMenuTrigger className="   w-8 rounded-full overflow-hidden ">
+                <Avatar>
+                  <AvatarImage
+                    src={user?.user_metadata?.profile_pic}
+                    className=" object-contain "
+                  />
+                  <AvatarFallback>DT</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
 
-          <DropdownMenuContent className='font-grotesk'>
-            <DropdownMenuLabel>Dixit Thakor</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-            <Link to="/dashboard" className="flex">
-            <LinkIcon className="mr-2 h-4 w-4" />
-            My Links
-          </Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className=" text-red-400 ">
-              <LogOut className=" mr-2 h-4 w-4 " />
-              <span>Logout</span>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      )}
-    </div>
-  </nav>
+              <DropdownMenuContent className="font-grotesk">
+                <DropdownMenuLabel>
+                  {user?.user_metadata?.name}
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <Link to="/dashboard" className="flex">
+                    <LinkIcon className="mr-2 h-4 w-4" />
+                    My Links
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem className=" text-red-400 ">
+                  <LogOut className=" mr-2 h-4 w-4 " />
+                  <span
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                  >
+                    Logout
+                  </span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+        </div>
+      </nav>
     </>
   );
 };
