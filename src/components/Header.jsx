@@ -14,12 +14,13 @@ import { LinkIcon, LogOut } from "lucide-react";
 import { UrlState } from "@/context";
 import useFetch from "@/hooks/usefetch";
 import { logout } from "@/db/apiAuth";
+import { BarLoader } from "react-spinners";
 
 const Header = () => {
   const navigate = useNavigate();
   const { user, fetchUser } = UrlState();
 
-  useFetch(logout);
+  const { loading, fn: fnLogout } = useFetch(logout);
   return (
     <>
       <nav className="py-2 flex justify-between items-center ">
@@ -57,7 +58,10 @@ const Header = () => {
                   <LogOut className=" mr-2 h-4 w-4 " />
                   <span
                     onClick={() => {
-                      navigate("/");
+                      fnLogout().then(() => {
+                        fetchUser();
+                        navigate("/");
+                      });
                     }}
                   >
                     Logout
@@ -67,7 +71,9 @@ const Header = () => {
             </DropdownMenu>
           )}
         </div>
+        
       </nav>
+      {loading && <BarLoader className="mb-4" width={"100%"} color="#36d7b7" />}
     </>
   );
 };
