@@ -4,15 +4,15 @@ import { Outlet } from 'react-router-dom'
 
 const Applayout = () => {
   return (
-    <div>
-       <main className=' min-h-screen container '>
-         <Header/>
-         <Outlet/> 
-       </main>
+    <div className="flex flex-col min-h-screen">
+      <main className="flex-1 container">
+        <Header />
+        <Outlet />
+      </main>
 
-      <div className=' p-10 text-center bg-gray-800 mt-10 '>
-         Made with 💕 Dixit Thakor
-      </div>
+      <footer className="p-6 text-center bg-gray-800 text-white">
+        Made with 💗 by RoadsideCoder
+      </footer>
     </div>
   )
 }
