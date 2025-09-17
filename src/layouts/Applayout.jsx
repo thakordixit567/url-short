@@ -1,20 +1,18 @@
-import Header from '@/components/Header'
-import React from 'react'
-import { Outlet } from 'react-router-dom'
+import Header from "@/components/header";
+import {Outlet} from "react-router-dom";
 
-const Applayout = () => {
+const AppLayout = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-1 container">
+    <div>
+      <main className="min-h-screen container ">
         <Header />
         <Outlet />
       </main>
-
-      <footer className="p-6 text-center bg-gray-800 text-white">
-        Made with 💗 by RoadsideCoder
-      </footer>
+      <div className="p-10 font-slackey text-center bg-[#1A1A1A] mt-10">
+        Made with 💗 by Dixit Thakor.
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Applayout
+export default AppLayout;

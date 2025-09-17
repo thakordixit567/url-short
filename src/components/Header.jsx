@@ -23,17 +23,17 @@ const Header = () => {
 
   return (
     <>
-      <nav className="py-4 flex justify-between items-center ">
+      <nav className="py-4  flex justify-between items-center">
         <Link to="/">
-          <img src="/logo.png" className="  h-16" alt="Trimrr Logo" />
+          <img src="/logo.png" className="h-16" alt="Trimrr Logo" />
         </Link>
-        <div className="flex  gap-4">
+        <div className="  flex gap-4">
           {!user ? (
             <Button onClick={() => navigate("/auth")}>Login</Button>
           ) : (
-            <DropdownMenu>
-              <DropdownMenuTrigger className="w-10 rounded-full ">
-                <Avatar className="">
+            <DropdownMenu className="font-grotesk">
+              <DropdownMenuTrigger className="w-10 rounded-full font-grotesk overflow-hidden">
+                <Avatar>
                   <AvatarImage src={user?.user_metadata?.profile_pic} />
                   <AvatarFallback>PA</AvatarFallback>
                 </Avatar>
@@ -44,7 +44,7 @@ const Header = () => {
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <Link to="/dashboard" className="flex">
+                  <Link to="/dashboard" className="font-grotesk flex">
                     <LinkIcon className="mr-2 h-4 w-4" />
                     My Links
                   </Link>
