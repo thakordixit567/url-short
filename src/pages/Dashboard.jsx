@@ -9,6 +9,7 @@ import { UrlState } from "@/context";
 import { getUrls } from "@/db/apiUrls";
 import { getClicks } from "@/db/apiClicks";
 import Error from "@/components/Error";
+import Linkcard from "@/components/Linkcard";
 
 const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -44,8 +45,8 @@ const Dashboard = () => {
   );
 
   return (
-    <div className="font-grotesk min-h-screen flex flex-col items-center justify-start px-4 py-6">
-      <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
+    <div className=" font-grotesk min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 py-6 flex justify-center">
+      <div className="w-full max-w-5xl flex flex-col items-center">
         {/* Loader */}
         <div className="w-full mb-6">
           {(loading || loadingClicks) && (
@@ -98,9 +99,7 @@ const Dashboard = () => {
         <div className="w-full mt-6">
           {error && <Error message={error?.message} />}
           {(filteredUrls || []).map((url, i) => (
-            <p key={i} className="py-2">
-              {url.title}
-            </p>
+            <Linkcard key={i} url={url} fetchUrls={fnUrls} />
           ))}
         </div>
       </div>
