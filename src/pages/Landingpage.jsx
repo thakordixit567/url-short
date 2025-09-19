@@ -40,11 +40,20 @@ const LandingPage = () => {
     </Button>
   </form>
 
+  <div className="py-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-6">
   <img
     src="/banner1.png"
-    className="w-full my-11 rounded-xl shadow-lg"
-    alt="Banner"
+    className="w-72 sm:w-80 md:w-96 my-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-500 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out"
+    alt="Banner1"
   />
+
+  <img
+    src="/banner1.png"
+    className="w-72 sm:w-80 md:w-96 my-4 rounded-xl shadow-lg border-2 border-transparent hover:border-blue-500 hover:shadow-xl hover:scale-105 transition-all duration-300 ease-in-out"
+    alt="Banner2"
+  />
+</div>
+
 
   <Accordion type="multiple" collapsible className="w-full font-grotesk ">
     <AccordionItem value="item-1">
